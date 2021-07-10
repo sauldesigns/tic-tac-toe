@@ -42,20 +42,44 @@ const checkGameStatus = () => {
     // check winner
     if (topLeft && topLeft === topMiddle && topLeft === topRight) {
         handleWin(topLeft);
+        cellDivs[0].classList.add('won');
+        cellDivs[1].classList.add('won');
+        cellDivs[2].classList.add('won');
     } else if (middleLeft && middleLeft === middleMiddle && middleLeft === middleRight) {
         handleWin(middleLeft);
+        cellDivs[3].classList.add('won');
+        cellDivs[4].classList.add('won');
+        cellDivs[5].classList.add('won');
     } else if (bottomLeft && bottomLeft === bottomMiddle && bottomLeft === bottomRight) {
         handleWin(bottomLeft);
+        cellDivs[6].classList.add('won');
+        cellDivs[7].classList.add('won');
+        cellDivs[8].classList.add('won');
     } else if (topLeft && topLeft === middleLeft && topLeft === bottomLeft) {
         handleWin(topLeft);
+        cellDivs[0].classList.add('won');
+        cellDivs[3].classList.add('won');
+        cellDivs[6].classList.add('won');
     } else if (topMiddle && topMiddle === middleMiddle && topMiddle === bottomMiddle) {
         handleWin(topMiddle);
+        cellDivs[1].classList.add('won');
+        cellDivs[4].classList.add('won');
+        cellDivs[7].classList.add('won');
     } else if (topRight && topRight === middleRight && topRight === bottomRight) {
         handleWin(topRight);
+        cellDivs[2].classList.add('won');
+        cellDivs[5].classList.add('won');
+        cellDivs[8].classList.add('won');
     } else if (topLeft && topLeft === middleMiddle && topLeft === bottomRight) {
         handleWin(topLeft);
+        cellDivs[0].classList.add('won');
+        cellDivs[4].classList.add('won');
+        cellDivs[8].classList.add('won');
     } else if (topRight && topRight === middleMiddle && topRight === bottomLeft) {
         handleWin(topRight);
+        cellDivs[2].classList.add('won');
+        cellDivs[4].classList.add('won');
+        cellDivs[6].classList.add('won');
     } else if (topLeft && topMiddle && topRight && middleLeft && middleMiddle && middleRight && bottomLeft && bottomMiddle && bottomRight) {
         gameIsStarted = false;
         statusDiv.innerHTML = 'No winner!';
@@ -79,10 +103,12 @@ const handleReset = (e) => {
     for (let cellDiv of cellDivs) {
         cellDiv.classList.remove('x');
         cellDiv.classList.remove('o');
+        cellDiv.classList.remove('won');
     }
 }
 
 const handleCellClick = (e) => {
+    if (winner) return;
     const classList = e.target.classList;
 
     if (classList[1] === 'x' || classList[1] === 'o') return;

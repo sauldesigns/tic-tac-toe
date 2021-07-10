@@ -2,6 +2,7 @@
     --primary-color: #14BDAC;
     --primary-text-color: #545454;
     --accent-text-color: #F2EBD3;
+    --won-color: #BD022F;
 }
 
 * {
@@ -20,8 +21,8 @@ body {
 
 .container {
     background-color: var(--primary-color);
-    margin: 3.125em;
-    padding: 3.125em;
+    margin: 2.25em;
+    padding: 2.25em;
     border-radius: 1.5625em;
 }
 
@@ -75,6 +76,10 @@ body {
     cursor: pointer;
 }
 
+.x, .o {
+    cursor: default;
+}
+
 .x::after {
     content: '×';
     font-size: 12.5rem;
@@ -85,4 +90,53 @@ body {
     content: '○';
     font-size: 14.0625rem;
     color: var(--accent-text-color);
+}
+
+.won::after {
+    color: var(--won-color);
+}
+
+@media only screen and (max-width: 1024px) {
+    .game-grid {
+        margin-top: 1.5625em;
+        grid-gap: 0.625em;
+
+    }
+
+    .game-cell {
+        height: 9.375em;
+        width: 9.375em;
+    }
+
+    .x::after {
+        font-size: 9.375rem;
+
+    }
+
+    .o::after {
+        font-size: 10.9375rem;
+    }
+}
+
+
+@media only screen and (max-width: 540px) {
+
+    .container {
+        margin: 1.5625em;
+        padding: 1.5625em;
+    }
+
+    .game-cell {
+        height: 6.25em;
+        width: 6.25em;
+    }
+
+    .x::after {
+        font-size: 6.25rem;
+
+    }
+
+    .o::after {
+        font-size: 6.25rem;
+    }
 }
